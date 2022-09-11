@@ -2,3 +2,11 @@
 
 # Yew-WebSocket
 Rust yew websocket service written with love :)
+
+This crate is based on the original yew websocket service that used to be part of the core library.
+https://github.com/yewstack/yew/blob/0.18.0/packages/yew/src/services/websocket.rs
+
+For some reason, the core team decided to kill it.
+
+It tried using the suggested libraries, but they are not properly integrated with yew.
+
