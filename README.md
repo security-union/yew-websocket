@@ -8,5 +8,5 @@ https://github.com/yewstack/yew/blob/0.18.0/packages/yew/src/services/websocket.
 
 For some reason, the core team decided to kill it.
 
-It tried using the suggested libraries (wasm-sockets or gloo-net), but those are not properly integrated with yew.
+I tried using the suggested libraries (wasm-sockets or gloo-net), but those are not properly integrated with yew.
 

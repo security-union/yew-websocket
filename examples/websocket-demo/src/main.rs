@@ -1,9 +1,9 @@
 use anyhow::Error;
-use yew_websocket::macros::Json;
 use serde_derive::{Deserialize, Serialize};
+use yew_websocket::macros::Json;
 
-use yew_websocket::websocket::{WebSocketService, WebSocketStatus, WebSocketTask};
 use yew::{html, Component, Context, Html};
+use yew_websocket::websocket::{WebSocketService, WebSocketStatus, WebSocketTask};
 
 type AsBinary = bool;
 
@@ -85,9 +85,12 @@ impl Component for Model {
                             Some(WsAction::Lost.into())
                         }
                     });
-                    let task =
-                        WebSocketService::connect("wss://echo.websocket.events/", callback, notification)
-                            .unwrap();
+                    let task = WebSocketService::connect(
+                        "wss://echo.websocket.events/",
+                        callback,
+                        notification,
+                    )
+                    .unwrap();
                     self.ws = Some(task);
                     true
                 }
