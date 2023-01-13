@@ -89,6 +89,7 @@ pub enum WebSocketError {
 pub struct WebSocketTask {
     ws: WebSocket,
     notification: Callback<WebSocketStatus>,
+    #[allow(dead_code)]
     listeners: [EventListener; 4],
 }
 
