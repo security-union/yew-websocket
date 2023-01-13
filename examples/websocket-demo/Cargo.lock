@@ -77,18 +77,9 @@ name = "frontend"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "futures",
- "gloo 0.2.1",
- "gloo-console",
- "gloo-net",
- "js-sys",
  "serde",
  "serde_derive",
  "serde_json",
- "thiserror",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "web-sys",
  "yew",
  "yew-websocket",
 ]
@@ -932,7 +923,7 @@ dependencies = [
 
 [[package]]
 name = "yew-websocket"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "futures",
