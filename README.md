@@ -6,6 +6,8 @@
 
 Rust yew websocket service written with love :)
 
+Supports yew version 0.20.0
+
 This crate is based on the original yew websocket service that used to be part of the core library.
 https://github.com/yewstack/yew/blob/0.18.0/packages/yew/src/services/websocket.rs
 
@@ -165,6 +167,6 @@ impl Component for Model {
 }
 
 fn main() {
-    yew::start_app::<Model>();
+    yew::Renderer::<Model>::new().render();
 }
 ```
