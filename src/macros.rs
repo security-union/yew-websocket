@@ -38,7 +38,7 @@ DEALINGS IN THE SOFTWARE.
 /// ## Example
 ///
 /// ```rust
-/// use yew::{binary_format, text_format};
+/// use yew_websocket::{binary_format, text_format};
 ///
 /// pub struct Json<T>(pub T);
 ///
@@ -90,7 +90,7 @@ macro_rules! text_format {
 /// ### Binary that is also Text
 ///
 /// ```rust
-/// use yew::{binary_format, text_format};
+/// use yew_websocket::{binary_format, text_format};
 ///
 /// pub struct Json<T>(pub T);
 ///
@@ -102,12 +102,11 @@ macro_rules! text_format {
 /// ```rust
 /// # mod to_make_rustdoc_happy {
 ///   use rmp_serde;
-///   use yew::{binary_format, text_format_is_an_error};
+///   use yew_websocket::binary_format;
 ///
 ///   pub struct MsgPack<T>(pub T);
 ///
 ///   binary_format!(MsgPack based on rmp_serde);
-///   text_format_is_an_error!(MsgPack);
 /// # }
 /// ```
 ///
@@ -122,12 +121,11 @@ macro_rules! text_format {
 /// ```rust
 /// # mod to_make_rustdoc_happy {
 ///   use bincode;
-///   use yew::{binary_format, text_format_is_an_error};
+///   use yew_websocket::binary_format;
 ///
 ///   pub struct Bincode<T>(pub T);
 ///
 ///   binary_format!(Bincode, bincode::serialize, bincode::deserialize);
-///   text_format_is_an_error!(Bincode);
 /// # }
 /// ```
 #[macro_export]
