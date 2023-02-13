@@ -271,30 +271,20 @@ where
 
 impl WebSocketTask {
     /// Sends data to a WebSocket connection.
-    pub fn send<IN>(&mut self, data: IN)
-    where
-        IN: Into<Text>,
-    {
-        if let Ok(body) = data.into() {
-            let result = self.ws.send_with_str(&body);
+    pub fn send(&mut self, data: String) {
+        let result = self.ws.send_with_str(&data);
 
-            if result.is_err() {
-                self.notification.emit(WebSocketStatus::Error);
-            }
+        if result.is_err() {
+            self.notification.emit(WebSocketStatus::Error);
         }
     }
 
     /// Sends binary data to a WebSocket connection.
-    pub fn send_binary<IN>(&mut self, data: IN)
-    where
-        IN: Into<Binary>,
-    {
-        if let Ok(body) = data.into() {
-            let result = self.ws.send_with_u8_array(&body);
+    pub fn send_binary(&mut self, data: Vec<u8>) {
+        let result = self.ws.send_with_u8_array(&data);
 
-            if result.is_err() {
-                self.notification.emit(WebSocketStatus::Error);
-            }
+        if result.is_err() {
+            self.notification.emit(WebSocketStatus::Error);
         }
     }
 }
