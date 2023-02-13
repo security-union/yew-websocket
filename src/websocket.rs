@@ -133,7 +133,7 @@ impl WebSocketService {
         let ConnectCommon(ws, listeners) = Self::connect_common(url, &notification)?;
         let listener = EventListener::new(&ws, "message", move |event: &Event| {
             let event = event.dyn_ref::<MessageEvent>().unwrap();
-            process_both(&event, &callback);
+            process_both(event, &callback);
         });
         Ok(WebSocketTask::new(ws, notification, listener, listeners))
     }
@@ -153,7 +153,7 @@ impl WebSocketService {
         let ConnectCommon(ws, listeners) = Self::connect_common(url, &notification)?;
         let listener = EventListener::new(&ws, "message", move |event: &Event| {
             let event = event.dyn_ref::<MessageEvent>().unwrap();
-            process_binary(&event, &callback);
+            process_binary(event, &callback);
         });
         Ok(WebSocketTask::new(ws, notification, listener, listeners))
     }
@@ -173,7 +173,7 @@ impl WebSocketService {
         let ConnectCommon(ws, listeners) = Self::connect_common(url, &notification)?;
         let listener = EventListener::new(&ws, "message", move |event: &Event| {
             let event = event.dyn_ref::<MessageEvent>().unwrap();
-            process_text(&event, &callback);
+            process_text(event, &callback);
         });
         Ok(WebSocketTask::new(ws, notification, listener, listeners))
     }
