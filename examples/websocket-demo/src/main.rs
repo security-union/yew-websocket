@@ -97,9 +97,15 @@ impl Component for Model {
                 WsAction::SendData(binary) => {
                     let request = WsRequest { value: 321 };
                     if binary {
-                        self.ws.as_mut().unwrap().send_binary(Json(&request));
+                        self.ws
+                            .as_mut()
+                            .unwrap()
+                            .send_binary(serde_json::to_string(&request).unwrap().into_bytes());
                     } else {
-                        self.ws.as_mut().unwrap().send(Json(&request));
+                        self.ws
+                            .as_mut()
+                            .unwrap()
+                            .send(serde_json::to_string(&request).unwrap());
                     }
                     false
                 }
