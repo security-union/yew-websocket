@@ -48,15 +48,6 @@ DEALINGS IN THE SOFTWARE.
 #[macro_export]
 macro_rules! text_format {
     ($type:ident based on $format:ident) => {
-        impl<'a, T> From<$type<&'a T>> for $crate::format::Text
-        where
-            T: ::serde::Serialize,
-        {
-            fn from(value: $type<&'a T>) -> $crate::format::Text {
-                $format::to_string(&value.0).map_err(::anyhow::Error::from)
-            }
-        }
-
         impl<T> From<$crate::format::Text> for $type<Result<T, ::anyhow::Error>>
         where
             T: for<'de> ::serde::Deserialize<'de>,
@@ -131,18 +122,9 @@ macro_rules! text_format {
 #[macro_export]
 macro_rules! binary_format {
     ($type:ident based on $format:ident) => {
-        binary_format!($type, $format::to_vec, $format::from_slice);
+        binary_format!($type, $format::from_slice);
     };
-    ($type:ident, $into:path, $from:path) => {
-        impl<'a, T> From<$type<&'a T>> for $crate::format::Binary
-        where
-            T: ::serde::Serialize,
-        {
-            fn from(value: $type<&'a T>) -> $crate::format::Binary {
-                $into(&value.0).map_err(::anyhow::Error::from)
-            }
-        }
-
+    ($type:ident, $from:path) => {
         impl<T> From<$crate::format::Binary> for $type<Result<T, ::anyhow::Error>>
         where
             T: for<'de> ::serde::Deserialize<'de>,
