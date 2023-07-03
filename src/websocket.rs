@@ -279,7 +279,7 @@ impl WebSocketTask {
     }
 
     /// Sends binary data to a WebSocket connection.
-    pub fn send_binary(&mut self, data: Vec<u8>) {
+    pub fn send_binary(&self, data: Vec<u8>) {
         let result = self.ws.send_with_u8_array(&data);
 
         if result.is_err() {

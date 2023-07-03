@@ -1,0 +1,72 @@
+# Based on https://github.com/actions-rs/meta/blob/master/recipes/quickstart.md
+
+on: [pull_request]
+
+name: check frontend
+
+env:
+  ACTIX_PORT: 8080
+  TRUNK_SERVE_PORT: 80
+  OAUTH_CLIENT_ID: mock
+  OAUTH_AUTH_URL: mock
+  OAUTH_TOKEN_URL: mock
+  OAUTH_CLIENT_SECRET: mock
+  OAUTH_REDIRECT_URL: http://localhost:8080/login/callback
+  RUST_LOG: info
+  PG_URL: mock
+  GMAIL_POLL_FREQUENCY_MILLIS: 60000
+  CB_API_KEY: mock
+  GCLOUD_PROJECT: cldshld
+  GCLOUD_PUB_SUB_SUB_ID: projects/cldshld/subscriptions/GmailSubscriptionSub
+  GCLOUD_PUB_SUB_TOKEN: mock
+  PUB_SUB_TOPIC_NAME: projects/cldshld/topics/GmailNotification
+  GCLOUD_PUB_SUB_ACCOUNT: mock
+  GCLOUD_PUB_SUB_PKEY: mock
+  DISABLE_TEST_HANDLE: true
+  PUBLIC_UI_URL: blah
+  GMAIL_WATCH_EXPIRATION_SEC: 86400
+  OPENAI_API_KEY: mock
+  NEW_ORG_CHECK_FREQ_SEC: 600
+  HISTORY_HOSPITAL_MOVE_SEC: 86400
+  ADMIN_ACCOUNT: blah
+  GMAIL_WATCH_CHECK_FREQ_SEC: 3600
+  UI_URL: blah
+  UI_URL_AFTER_LOGIN: blah
+  ENABLE_OAUTH: false 
+  LOGIN_URL: 1 
+  MICROSOFT_LOGIN_URL: 1
+  LOGOUT_URL: 1 
+  SUGGESTED_WHITELIST_URL: 1 
+  SUBSCRIBE_URL: 1 
+  SUBSCRIBE_STOP_URL: 1
+  WHITELIST_URL: 1 
+  DEFAULT_DATE_RANGE_WKS: 1
+  MESSAGES_URL: 1
+  COMPANIES_URL: 1
+  MY_COMPANY_URL: 1
+  CLDSHLD_LABEL: blah
+  USER_PROFILE_URL: blah
+  SESSION_URL: blah
+  WAITLIST_URL: blah
+  FEATURE_FLAG_MICROSOFT: blah
+  CONTACT_URL: blah
+  CONTACT_CATEGORY_URL: blah
+  NOTIFICATION_URL: blah
+  BLACKLISTED_COMPANY_GRAPH_URL: make_ci_happy
+  WHITELISTED_COMPANY_GRAPH_URL: make_ci_happy
+  GET_COMPANY_ALTERNATIVES_URL: make_ci_happy
+  ENABLE_INSIGHTS: false
+  ENABLE_PROFILE: false
+  AUTO_REPLY_USERS: blah
+
+jobs:
+  test:
+    name: cargo test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@1.66
+        with:
+          components: clippy, rustfmt
+      - run: cargo fmt --check
+      - run: cargo test 
