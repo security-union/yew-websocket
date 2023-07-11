@@ -1,9 +1,11 @@
 use anyhow::Error;
+use macros::Json;
 use serde_derive::{Deserialize, Serialize};
-use yew_websocket::macros::Json;
 
 use yew::{html, Component, Context, Html};
 use yew_websocket::websocket::{WebSocketService, WebSocketStatus, WebSocketTask};
+
+pub mod macros;
 
 type AsBinary = bool;
 
