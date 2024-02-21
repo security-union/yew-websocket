@@ -1,6 +1,6 @@
 [package]
 name = "yew-websocket"
-version = "1.0.1"
+version = "0.21.0"
 edition = "2021"
 license = "MIT"
 description = "Rust yew websocket service written with love :)"
@@ -11,7 +11,7 @@ bincode = "1"
 rmp-serde = "1"
 
 [dependencies]
-yew = "0.20"
+yew = "0.21.0"
 gloo-net = "0.2"
 gloo-console = "0.2"
 wasm-bindgen-futures = "0.4"
