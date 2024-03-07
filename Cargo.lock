@@ -1233,7 +1233,7 @@ dependencies = [
 
 [[package]]
 name = "yew-websocket"
-version = "0.21.0"
+version = "1.21.0"
 dependencies = [
  "anyhow",
  "bincode",
