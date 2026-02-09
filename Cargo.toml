@@ -3,6 +3,7 @@ name = "yew-websocket"
 version = "1.22.0"
 edition = "2021"
 license = "MIT"
+publish = true
 description = "Rust yew websocket service written with love :)"
 repository = "https://github.com/security-union/yew-websocket.git"
 rust-version = "1.84.0"
